@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_web_seo_components",
+  "info": {
+    "displayName": "SeoComponent",
+    "icon": "stack"
+  },
+  "options": {},
+  "attributes": {
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "shareImage": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

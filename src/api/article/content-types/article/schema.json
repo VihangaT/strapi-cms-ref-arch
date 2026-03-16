@@ -75,6 +75,16 @@
       "relation": "manyToOne",
       "target": "api::organization.organization",
       "inversedBy": "articles"
+    },
+    "seoMetadata": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "web.seo-component",
+      "repeatable": false
     }
   }
 }

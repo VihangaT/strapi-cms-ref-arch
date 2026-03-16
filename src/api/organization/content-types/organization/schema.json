@@ -53,6 +53,18 @@
         "videos",
         "audios"
       ]
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article",
+      "mappedBy": "organization"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::author.author",
+      "mappedBy": "organization"
     }
   }
 }

@@ -9,7 +9,9 @@ export interface WebSeoComponent extends Struct.ComponentSchema {
   attributes: {
     metaDescription: Schema.Attribute.Text;
     metaTitle: Schema.Attribute.String;
-    shareImage: Schema.Attribute.Text;
+    shareImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
   };
 }
 

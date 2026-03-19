@@ -1,14 +1,14 @@
 # Whats Strapi
-** Strapi is an open-source, Node.js-based headless content management system (CMS) that allows developers to create and manage content via APIs for any frontend or platform **
+Strapi is an open-source, Node.js-based headless content management system (CMS) that allows developers to create and manage content via APIs for any frontend or platform
  
---------------------------
+
 ## Project Planning Phase
--------------------------
+
 For this project, we will be creating a Content Management System for a blog website. 
 
-------------------
+
 ## Create project
-------------------
+
 npx create-strapi-app <projectName> --quickstart
 Replace <projectName> with your project name.
 
@@ -19,17 +19,17 @@ Log in to:
 http://localhost:1337/admin
 Create an admin user
 
----------------------------------------
+
 ## Create Content Types (Database Models)
----------------------------------------
+
 Content types that are needed for the project can be created by following the below steps.
 
 Go to:
 Admin Panel → Content-Type Builder
 
------------------------
+
 ## Create Collection Type
------------------------
+
 - Add fields
 - Add relations
 - Set validations
@@ -43,9 +43,9 @@ Ex: As we are creating a blog site following entities will be created.
 
 By following the above steps, you could create those entities, and Strapi will create the underlying database structures and APIs.
 
-------------------
+
 ## Enable API Access
-------------------
+
 Strapi will generate the required APIs based on the entities that are introduced in the above steps. But still, the following configurations need to be done in order to access those APIs.
 
 APIs can be enabled as Public or Authenticated for each of the entities that were introduced in the above step.
@@ -61,9 +61,9 @@ Enable required actions:
 - delete
 - Save
 
----------------------------
+
 ## Generic REST API Structure
----------------------------
+
 Strapi will auto-generate the REST APIs based on the entities that were introduced, considering the configurations that were done in the above step.
 
 To access the REST APIs, you would need to get the access tokens from stapi.
@@ -71,9 +71,9 @@ Go to http://localhost:1337/admin
 Settings > Users & Permissions plugin > Roles > Public or Authenticated > View Token
 
 The token needs to be used as a bearer token to access the APIs.
---------------
+
 ## 📌 CREATE
---------------
+
 POST /api/entityType/
 
 Request Example
@@ -91,9 +91,9 @@ Request Example
   }
 }
 ```
-------------
+
 ## 📌 GET ALL
-------------
+
 PUT /api/entityType/
 
 Request Example
@@ -113,9 +113,9 @@ Request Example
             "locale": "en"
 }
 ```
-------------
+
 ## 📌 GET ONE
-------------
+
 GET /api/entityType/:id
 
 Request Example
@@ -138,9 +138,9 @@ Request Example
     "meta": {}
 }
 ```
-------------
+
 ## 📌 UPDATE
-------------
+
 PUT /api/entityType/:id
 
 Request Example
@@ -153,17 +153,17 @@ Request Example
   }
 }
 ```
--------------
+
 ## 📌 DELETE
--------------
+
 DELETE /api/entityType/:id
 
 Request Example
 `DELETE /api/articles/dc4eipszz7e5518a1j26jinz`
 
-----------------------------------
+
 ## 📌 POPULATE WITH SELECTED FIELDS
-----------------------------------
+
 GET api/entityType?fields[0]=fieldName
 
 Request Example
@@ -184,9 +184,9 @@ Request Example
 ]
 }
 ```
-------------------------
+
 ## 📌 POPULATE RELATION
-------------------------
+
 GET /api/entityType?populate=*
 Or specific:
 GET /api/entityType?populate=relationName
@@ -222,9 +222,9 @@ Request Example
     "meta": {}
 }
 ```
-------------------------------------------
+
 ## 📁 Standard Project Structure (Strapi)
-------------------------------------------
+```
 projectName/
 │
 ├── config/
@@ -237,16 +237,13 @@ projectName/
 ├── Dockerfile
 ├── docker-compose.yml
 └── package.json
+```
 
-
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# STRAPI + DOCKER BACKEND PROJECT BLUEPRINT
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-# How to Dockerize the Strapi Project
 --------------------------------------
+# HOW TO DOCKERIZE STRAPI
+
 ## Create a dockerfile
---------------------------------------
+
 ```
 FROM node:22
 
@@ -264,9 +261,9 @@ EXPOSE 1337
 
 CMD ["npm", "run", "start"]
 ```
---------------------------------
+
 ## Create .dockerignore file
---------------------------------
+
 ```
 node_modules
 npm-debug.log
@@ -279,9 +276,9 @@ build
 .cache
 .tmp
 ```
---------------------------------
+
 ## Create docker-compose.yml file
---------------------------------
+
 ```
 services:
   strapi:
@@ -328,9 +325,9 @@ services:
 volumes:
   mysql-data:
 ```
-------------------
+
 ## Create .env file
-------------------
+
 ```
 # Server Configuration
 HOST=0.0.0.0
@@ -355,9 +352,9 @@ DATABASE_USERNAME=strapi
 DATABASE_PASSWORD=strapi
 DATABASE_SSL=false
 ```
------------------------------
+
 ## Update config/database.js
------------------------------
+
 ```
 import path from 'path';
 import type { Core } from '@strapi/strapi';
@@ -421,21 +418,20 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Database 
 };
 export default config;
 ```
--------------------------
+
 ## Build & Run
--------------------------
+
 docker compose up --build
 
----------------
+
 ## Access Strapi
----------------
+
 http://localhost:1337/
 
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Default Strapi Documentation
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # 🚀 Getting started with Strapi

@@ -74,7 +74,7 @@ The token needs to be used as a bearer token to access the APIs.
 --------------
 ## 📌 CREATE
 --------------
-POST /api/articles
+POST /api/entityType/
 
 Request Example
 `POST http://localhost:1337/api/articles/`
@@ -94,7 +94,7 @@ Request Example
 ------------
 ## 📌 GET ALL
 ------------
-PUT /api/<collection-name>/
+PUT /api/entityType/
 
 Request Example
 `GET /api/articles`
@@ -116,7 +116,7 @@ Request Example
 ------------
 ## 📌 GET ONE
 ------------
-GET /api/<collection-name>/:id
+GET /api/entityType/:id
 
 Request Example
 `GET /api/articles/q9zytuiek7odox7afnmmgaqv`
@@ -141,7 +141,7 @@ Request Example
 ------------
 ## 📌 UPDATE
 ------------
-PUT /api/<collection-name>/:id
+PUT /api/entityType/:id
 
 Request Example
 `PUT /api/articles/zvarnllu1pzqeyjkamoyn0jv`
@@ -156,7 +156,7 @@ Request Example
 -------------
 ## 📌 DELETE
 -------------
-DELETE /api/<collection-name>/:id
+DELETE /api/entityType/:id
 
 Request Example
 `DELETE /api/articles/dc4eipszz7e5518a1j26jinz`
@@ -164,7 +164,7 @@ Request Example
 ----------------------------------
 ## 📌 POPULATE WITH SELECTED FIELDS
 ----------------------------------
-GET api/articles?fields[0]=title
+GET api/entityType?fields[0]=fieldName
 
 Request Example
 `GET /api/articles?fields=title`
@@ -187,9 +187,9 @@ Request Example
 ------------------------
 ## 📌 POPULATE RELATION
 ------------------------
-GET /api/<collection>?populate=*
+GET /api/entityType?populate=*
 Or specific:
-GET /api/<collection>?populate=relationName
+GET /api/entityType?populate=relationName
 
 Request Example
 `GET api/articles?populate=organization` OR `GET api/articles?populate=*`

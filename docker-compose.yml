@@ -1,0 +1,44 @@
+services:
+  strapi:
+    restart: always
+    container_name: strapi-app
+    build: .
+    ports:
+      - "1337:1337"
+    environment:
+      DATABASE_CLIENT: mysql
+      DATABASE_HOST: mysql
+      DATABASE_PORT: 3306
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
+      NODE_ENV: development
+    depends_on:
+      mysql:
+        condition: service_healthy # This requires the healthcheck below
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  mysql:
+    container_name: strapi-db
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_DATABASE: strapi  # Matches Strapi's DATABASE_NAME
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: strapi
+      MYSQL_PASSWORD: strapi
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "strapi", "-pstrapi"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s # Gives MySQL time to initialize before failing checks
+
+volumes:
+  mysql-data:
